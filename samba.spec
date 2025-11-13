@@ -392,7 +392,7 @@ BuildRequires: python3-talloc >= %{talloc_version}
 BuildRequires: libtevent-devel >= %{tevent_version}
 BuildRequires: python3-tevent >= %{tevent_version}
 
-BuildRequires: libtdb-devel >= %{tdb_version}
+BuildRequires: libtdb-devel == %{tdb_version}
 BuildRequires: python3-tdb >= %{tdb_version}
 %endif
 
@@ -1613,7 +1613,8 @@ rm -f %{buildroot}%{_mandir}/man3/PyLdb*
 
 # CTDB
 %if %{with clustering}
-touch %{buildroot}%{_libexecdir}/ctdb/statd_callout
+mkdir -p %{buildroot}%{_sysconfdir}/ctdb
+ln -sf %{_libexecdir}/ctdb/statd_callout %{buildroot}%{_sysconfdir}/ctdb/statd-callout
 #endif with clustering
 %endif
 
@@ -3107,6 +3108,9 @@ fi
 %{python3_sitearch}/samba/xattr_tdb.*.so
 %{_libdir}/samba/libsamba-net-join.cpython*.so
 %{_libdir}/samba/libsamba-python.cpython*.so
+
+%{_libdir}/samba/libpytalloc-util.cpython*-private-samba.so
+%{python3_sitearch}/talloc.cpython*.so
 
 %if %{with includelibs}
 %{_libdir}/samba/libpyldb-util.cpython*.so

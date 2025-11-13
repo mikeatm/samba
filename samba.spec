@@ -182,9 +182,9 @@
 %global libsmbclient_so_version 0
 %global libwbclient_so_version 0
 
-%global talloc_version 2.4.3
-%global tdb_version 1.4.14
-%global tevent_version 0.17.1
+%global talloc_version 2.4.2
+%global tdb_version 1.4.12
+%global tevent_version 0.16.1
 
 %global required_mit_krb5 1.20.1
 
@@ -387,7 +387,7 @@ BuildRequires: perl(Parse::Yapp)
 
 %if %{without includelibs}
 BuildRequires: libtalloc-devel >= %{talloc_version}
-BuildRequires: python3-talloc-devel >= %{talloc_version}
+BuildRequires: python3-talloc >= %{talloc_version}
 
 BuildRequires: libtevent-devel >= %{tevent_version}
 BuildRequires: python3-tevent >= %{tevent_version}

@@ -24,7 +24,8 @@
 # or
 # rpmbuild --rebuild --with=testsuite --with=includelibs samba.src.rpm
 #
-%bcond includelibs 0
+#%bcond includelibs 0
+%bcond_without includelibs
 
 # fedpkg mockbuild --with=ccache
 %bcond ccache 0
